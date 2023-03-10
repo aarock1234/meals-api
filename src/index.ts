@@ -3,7 +3,6 @@ require('dotenv').config();
 import express from 'express';
 import { Request, Response } from 'express';
 import { json } from 'body-parser';
-// express logger
 import morgan from 'morgan';
 
 import generateRecipe from './openai';
