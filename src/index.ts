@@ -29,7 +29,7 @@ setInterval(() => {
 		const { res, ingredients } = queueItem;
 
 		generateRecipe(ingredients).then((response) => {
-			res.json(response);
+			res.json(response.choices[0].text);
 		});
 	}
 }, 1000);
