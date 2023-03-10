@@ -10,7 +10,7 @@ import generateRecipe from './openai';
 const app = express();
 
 app.use(json());
-app.use(morgan('dev'));
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 
 interface QueueData {
 	res: Response;
