@@ -6,8 +6,10 @@ const config = new Configuration({
 
 const openai = new OpenAIApi(config);
 
-async function generateRecipe(ingredients: string[]) {
-	const prompt = `Write a recipe based on some or all of these ingredients:\n\nIngredients:\n${ingredients.join(
+async function generateRecipe(ingredients: string[], focus: string) {
+	const prompt = `Write a${
+		focus ? ` ${focus} ` : ' '
+	}recipe based on some or all of these ingredients:\n\nIngredients:\n${ingredients.join(
 		'\n'
 	)}\n\nRecipe name, instructions & measurements:\n\n`;
 

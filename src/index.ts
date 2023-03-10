@@ -16,6 +16,7 @@ app.use(cors());
 
 interface QueueData {
 	res: Response;
+	focus: string;
 	ingredients: string[];
 }
 
@@ -26,7 +27,7 @@ setInterval(() => {
 		const queueItem: QueueData | undefined = queue.shift();
 		if (!queueItem) return;
 
-		const { res, ingredients } = queueItem;
+		const { res, ingredients, focus } = queueItem;
 
 		generateRecipe(ingredients).then((response) => {
 			res.json({
@@ -38,13 +39,13 @@ setInterval(() => {
 }, 1000);
 
 app.post('/api/recipe', (req: Request, res: Response) => {
-	const ingredients = req.body.ingredients;
+	const { ingredients, focus } = req.body;
 
 	if (!ingredients || ingredients.length === 0) {
 		return res.status(400).json({ error: true, message: 'No ingredients provided' });
 	}
 
-	queue.push({ res, ingredients });
+	queue.push({ res, ingredients, focus });
 });
 
 app.listen(process.env.PORT || 3000, () => {
