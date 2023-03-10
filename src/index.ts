@@ -4,6 +4,7 @@ import express from 'express';
 import { Request, Response } from 'express';
 import { json } from 'body-parser';
 import morgan from 'morgan';
+import cors from 'cors';
 
 import generateRecipe from './openai';
 
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(json());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
+app.use(cors());
 
 interface QueueData {
 	res: Response;
