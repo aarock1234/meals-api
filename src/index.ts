@@ -29,7 +29,7 @@ setInterval(() => {
 
 		const { res, ingredients, focus } = queueItem;
 
-		generateRecipe(ingredients).then((response) => {
+		generateRecipe(ingredients, focus).then((response) => {
 			res.json({
 				error: false,
 				recipe: response.choices[0].text,
