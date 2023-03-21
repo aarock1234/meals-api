@@ -13,7 +13,8 @@ async function generateRecipe(ingredients: string[], focus: string) {
 		'\n'
 	)}\n\nRecipe name, instructions & measurements:\n\n`;
 
-    console.log(prompt);
+	// For debugging purposes
+    //console.log(prompt);
 
 	const response = await openai.createCompletion({
 		model: 'text-davinci-003',
