@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "node dist/index.js",
-    "build:start": "npm run build && npm run start"
+    "cs180": "npm run build && npm run start"
   },
   "author": "",
   "license": "ISC",
